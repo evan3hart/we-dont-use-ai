@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f1e8">
+  <meta name="description" content="Thoughtful, capable help from a real person. No AI-generated work. Tell me what you need done.">
+  <title>We Don't Use AI — Human help, for real</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f6f1e8;
+      --ink: #20231f;
+      --muted: #65675f;
+      --green: #214f3b;
+      --green-dark: #163a2a;
+      --orange: #e16c46;
+      --line: #ded8cb;
+      --white: #fffdf8;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-block: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { font-weight: 850; letter-spacing: -.055em; text-decoration: none; font-size: 1.05rem; }
+    .brand span { color: var(--orange); }
+    nav { display: flex; align-items: center; gap: 26px; font-size: .9rem; }
+    nav a { text-decoration: none; }
+    nav a:hover, nav a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+    .nav-cta { color: var(--green); font-weight: 750; }
+    .hero {
+      min-height: 590px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 50px;
+      padding-block: 76px 90px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--green);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--orange); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 720px;
+      margin: 22px 0;
+      font-family: var(--serif);
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 500;
+      letter-spacing: -.075em;
+      line-height: .96;
+    }
+    h1 em { color: var(--green); font-weight: 500; }
+    .hero-copy { max-width: 520px; color: var(--muted); font-size: 1.13rem; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 30px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 12px 21px;
+      border: 1px solid var(--green);
+      border-radius: 4px;
+      background: var(--green);
+      color: white;
+      font-weight: 750;
+      text-decoration: none;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .button:hover { background: var(--green-dark); transform: translateY(-2px); }
+    .button:focus-visible, a:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+    .text-link { font-weight: 700; text-underline-offset: 4px; }
+    .scribble {
+      position: relative;
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      padding: 38px;
+      border: 1px solid #d5ccba;
+      background: #e9e1d2;
+      transform: rotate(2deg);
+      box-shadow: 12px 15px 0 rgb(32 35 31 / 8%);
+    }
+    .scribble::before, .scribble::after { position: absolute; content: ""; height: 1px; background: #c9c0b1; left: 0; right: 0; }
+    .scribble::before { top: 33%; } .scribble::after { top: 66%; }
+    .note {
+      position: relative;
+      z-index: 1;
+      max-width: 300px;
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+      line-height: 1.15;
+      text-align: center;
+      transform: rotate(-3deg);
+    }
+    .note strong { color: var(--orange); font-weight: 500; }
+    .note small { display: block; margin-top: 19px; color: var(--muted); font: 700 .73rem var(--sans); letter-spacing: .12em; text-transform: uppercase; }
+    .ticker { overflow: hidden; background: var(--green); color: white; }
+    .ticker-inner { display: flex; justify-content: center; gap: 30px; padding: 14px 0; font-size: .8rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+    .ticker span::after { content: "✳"; margin-left: 30px; color: #edac83; }
+    section.content { padding-block: 100px; border-bottom: 1px solid var(--line); }
+    .section-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 90px; }
+    h2 { margin: 14px 0 20px; font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 500; letter-spacing: -.06em; line-height: 1.03; }
+    .section-intro { max-width: 430px; color: var(--muted); font-size: 1.05rem; }
+    .task-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 34px; margin: 0; padding: 0; list-style: none; }
+    .task-list li { padding: 18px 0; border-top: 1px solid var(--line); font-weight: 700; }
+    .task-list li::before { content: "+"; margin-right: 12px; color: var(--orange); font-size: 1.2rem; }
+    .not-sure { margin-top: 24px; color: var(--muted); }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
+    .step { padding-top: 17px; border-top: 2px solid var(--green); }
+    .step-number { color: var(--orange); font-size: .8rem; font-weight: 850; letter-spacing: .1em; }
+    .step h3 { margin: 13px 0 8px; font-family: var(--serif); font-size: 1.65rem; font-weight: 500; }
+    .step p { margin: 0; color: var(--muted); }
+    .promise {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+      padding: 52px;
+      background: #e8e2d6;
+    }
+    .promise h2 { margin-bottom: 0; }
+    .promise-copy { color: #484b44; }
+    .promise-copy strong { color: var(--ink); }
+    .price-row { display: flex; justify-content: space-between; align-items: baseline; gap: 30px; padding: 24px 0; border-top: 1px solid var(--line); }
+    .price-row:last-child { border-bottom: 1px solid var(--line); }
+    .price-row strong { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; }
+    .price-row span { color: var(--muted); text-align: right; }
+    .about-box { padding: 35px; border: 1px solid var(--line); background: var(--white); }
+    .about-box p:last-child { margin-bottom: 0; }
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      gap: 70px;
+      align-items: start;
+      padding-block: 100px;
+    }
+    .contact-info { padding-top: 9px; }
+    .contact-info p { margin-bottom: 8px; color: var(--muted); }
+    .contact-info a { color: var(--green); font-size: 1.15rem; font-weight: 750; text-underline-offset: 4px; }
+    .contact-info .phone { margin-top: 28px; }
+    .fine-print { margin-top: 30px; font-size: .84rem; }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding-block: 23px; border-top: 1px solid var(--line); color: var(--muted); font-size: .83rem; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 32px, 560px); }
+      .topbar { padding-block: 17px; }
+      nav { gap: 15px; font-size: .82rem; }
+      nav a:nth-child(1), nav a:nth-child(2) { display: none; }
+      .hero { min-height: auto; grid-template-columns: 1fr; gap: 48px; padding-block: 72px 64px; }
+      h1 { font-size: clamp(3.5rem, 15vw, 5.5rem); }
+      .scribble { min-height: 280px; }
+      .ticker-inner { justify-content: flex-start; width: max-content; }
+      section.content { padding-block: 72px; }
+      .section-grid, .contact { grid-template-columns: 1fr; gap: 34px; }
+      .steps { grid-template-columns: 1fr; gap: 24px; }
+      .promise { grid-template-columns: 1fr; gap: 22px; padding: 30px 24px; }
+      .task-list { gap: 0 18px; }
+      .task-list li { font-size: .94rem; }
+      .contact { padding-block: 72px; }
+    }
+    @media (max-width: 420px) {
+      .task-list { grid-template-columns: 1fr; }
+      .actions { align-items: stretch; flex-direction: column; }
+      .actions .button { width: 100%; }
+      footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="brand" href="#top" aria-label="We Don't Use AI home">WE DON'T USE <span>AI.</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#what-i-do">What I do</a>
+      <a href="#how-it-works">How it works</a>
+      <a class="nav-cta" href="#contact">Get in touch ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div>
+        <span class="eyebrow">A small, human-powered service</span>
+        <h1>Good work.<br><em>No AI.</em></h1>
+        <p class="hero-copy">Need a hand with something? I take on the writing, research, and little tasks that are easier with a thoughtful human on the other end.</p>
+        <div class="actions">
+          <a class="button" href="#contact">Tell me what you need ↗</a>
+          <a class="text-link" href="#what-i-do">See what I can help with</a>
+        </div>
+      </div>
+      <div class="scribble" aria-label="A handwritten-style note: Made by a human, for humans">
+        <div class="note">Made by a <strong>human</strong>,<br>for humans.<small>And yes, really.</small></div>
+      </div>
+    </div>
+
+    <div class="ticker" aria-label="Human-made work, no AI-generated work, just a real person">
+      <div class="ticker-inner" aria-hidden="true"><span>Human-made work</span><span>No AI-generated work</span><span>Just a real person</span></div>
+    </div>
+
+    <section class="content" id="what-i-do">
+      <div class="wrap section-grid">
+        <div>
+          <span class="eyebrow">The useful stuff</span>
+          <h2>What do you need off your plate?</h2>
+          <p class="section-intro">A few things I can help with. If your task isn’t on this list, ask anyway—if I can do it, I’ll tell you.</p>
+        </div>
+        <div>
+          <ul class="task-list">
+            <li>Emails, bios &amp; cover letters</li>
+            <li>Website &amp; product copy</li>
+            <li>Research &amp; summaries</li>
+            <li>Proofreading &amp; editing</li>
+            <li>Outreach &amp; follow-ups</li>
+            <li>Admin &amp; odd jobs</li>
+          </ul>
+          <p class="not-sure">Not sure what to call it? Just describe the problem.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content" id="how-it-works">
+      <div class="wrap">
+        <span class="eyebrow">Simple as it should be</span>
+        <h2>Three steps. No robot handoff.</h2>
+        <div class="steps">
+          <article class="step"><span class="step-number">01 / YOU REACH OUT</span><h3>Tell me about it</h3><p>Send a message with what you need, your deadline, and any useful context.</p></article>
+          <article class="step"><span class="step-number">02 / WE AGREE</span><h3>Get a clear quote</h3><p>I’ll ask questions if needed and confirm the scope, price, and timing before starting.</p></article>
+          <article class="step"><span class="step-number">03 / I GET TO WORK</span><h3>A human does it</h3><p>I’ll do the work myself, check in if anything changes, and send it back to you.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="wrap promise">
+        <div><span class="eyebrow">The whole point</span><h2>Made by me.<br>Not a machine.</h2></div>
+        <div class="promise-copy"><p><strong>I don’t use generative AI to do your work.</strong> No AI-written drafts, AI-generated research, or AI-made deliverables. If I can’t do the task myself, I’ll say so.</p><p>Ordinary spellcheck is fine. Anything that writes or creates the work for me isn’t.</p></div>
+      </div>
+    </section>
+
+    <section class="content" id="pricing">
+      <div class="wrap section-grid">
+        <div><span class="eyebrow">No surprise invoices</span><h2>Agree on the price first.</h2><p class="section-intro">Every task is different, so I’ll give you a clear quote before I start. No subscriptions, no pressure, no mystery fees.</p></div>
+        <div>
+          <div class="price-row"><strong>Small task</strong><span>Quick, clearly scoped work</span></div>
+          <div class="price-row"><strong>Bigger project</strong><span>Quoted based on what you need</span></div>
+          <div class="price-row"><strong>Not sure yet?</strong><span>Tell me about it and we’ll figure it out</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content" id="about">
+      <div class="wrap section-grid">
+        <div><span class="eyebrow">A real person, promise</span><h2>Who you’re hiring.</h2></div>
+        <div class="about-box"><p>I’m a person who likes getting useful things done—and thinks that should still be something you can ask another person to do.</p><p>This is a small, direct service. You talk to me, I do the work, and I’ll be upfront about what I can take on.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap contact" id="contact">
+      <div><span class="eyebrow">Over to you</span><h2>Tell me what you need.</h2><p class="section-intro">A rough idea is enough. I’ll get back to you and we can take it from there.</p></div>
+      <div class="contact-info">
+        <p>Email me</p>
+        <!-- Replace the placeholder email before publishing. -->
+        <a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a>
+        <p class="phone">Call or text</p>
+        <!-- Replace this placeholder with your real business number before publishing. -->
+        <strong>YOUR_PHONE_NUMBER</strong>
+        <p class="fine-print">Please don’t send sensitive or confidential information until we’ve agreed on the work and how to handle it.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap"><span>© <span id="year">2026</span> We Don’t Use AI</span><span>Thoughtful work, done by a person.</span></footer>
+</body>
+</html>
