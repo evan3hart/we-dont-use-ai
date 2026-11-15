@@ -4,12 +4,7 @@ A simple, responsive one-page website for a human-powered task service. The site
 
 ## Before publishing
 
-Edit `index.html` and replace these two contact placeholders near the bottom:
-
-- `YOUR_EMAIL@example.com` (update both the visible address and the `mailto:` link)
-- `YOUR_PHONE_NUMBER`
-
-You may also want to update the About section with your name and a few specifics about your experience, and review the service list and AI-use promise so they match exactly how you work.
+Review the contact section in `index.html` and set your real phone number if needed. The site is intentionally simple and designed to work without email.
 
 ## Publish for free with GitHub Pages
 
@@ -19,3 +14,4 @@ You may also want to update the About section with your name and a few specifics
 4. GitHub will show the published URL in the Pages settings once deployment finishes.
 
 No build step is needed.
+
